@@ -1,0 +1,1042 @@
+// ============================================================
+// Riders Backend Theme - Odoo 18
+// Brand: Orange #E85D00 | Black #1A1A1A | White
+// ============================================================
+
+// --- Brand Palette ---
+$riders-orange: #E85D00;
+$riders-orange-dark: #CC5200;
+$riders-orange-light: #FF7A1A;
+$riders-orange-subtle: #FFF4ED;
+$riders-orange-muted: #FFEADB;
+$riders-black: #1A1A1A;
+$riders-dark: #2D2D2D;
+$riders-gray-900: #111827;
+$riders-gray-700: #374151;
+$riders-gray-600: #4B5563;
+$riders-gray-500: #6B7280;
+$riders-gray-400: #9CA3AF;
+$riders-gray-300: #D1D5DB;
+$riders-gray-200: #E5E7EB;
+$riders-gray-100: #F3F4F6;
+$riders-gray-50: #F9FAFB;
+$riders-white: #FFFFFF;
+
+// ============================================================
+// 1. CSS CUSTOM PROPERTIES (Odoo 18 Variables Override)
+// ============================================================
+:root {
+  --o-brand-odoo: #{$riders-orange};
+  --o-brand-primary: #{$riders-orange};
+
+  --riders-orange: #{$riders-orange};
+  --riders-orange-dark: #{$riders-orange-dark};
+  --riders-orange-light: #{$riders-orange-light};
+  --riders-surface: #{$riders-white};
+  --riders-surface-alt: #{$riders-gray-50};
+  --riders-border: #{$riders-gray-200};
+  --riders-text: #{$riders-gray-900};
+  --riders-text-muted: #{$riders-gray-500};
+  --riders-radius: 10px;
+  --riders-radius-lg: 14px;
+  --riders-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --riders-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --riders-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --riders-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Dark mode overrides
+html[data-color-scheme="dark"] {
+  --o-brand-odoo: #{$riders-orange-light};
+  --o-brand-primary: #{$riders-orange-light};
+
+  --riders-surface: #1F2937;
+  --riders-surface-alt: #111827;
+  --riders-border: #374151;
+  --riders-text: #F9FAFB;
+  --riders-text-muted: #9CA3AF;
+  --riders-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --riders-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --riders-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+// ============================================================
+// 2. TYPOGRAPHY
+// ============================================================
+body.riders-backend {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--riders-surface-alt);
+  color: var(--riders-text);
+}
+
+// ============================================================
+// 3. NAVBAR (Top Bar)
+// ============================================================
+.o_main_navbar {
+  background: linear-gradient(135deg, $riders-black 0%, $riders-dark 100%) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: none !important;
+  height: 48px;
+
+  .o_menu_brand {
+    color: $riders-white !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+  }
+
+  .o_menu_sections {
+    > .o_nav_entry,
+    .dropdown-toggle {
+      color: rgba(255, 255, 255, 0.8) !important;
+      font-weight: 500;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      padding: 6px 12px !important;
+      margin: 0 2px;
+      transition: all var(--riders-transition);
+
+      &:hover,
+      &:focus,
+      &.show {
+        color: $riders-white !important;
+        background: rgba($riders-orange, 0.2) !important;
+      }
+
+      &.active {
+        color: $riders-white !important;
+        background: $riders-orange !important;
+      }
+    }
+  }
+
+  .o_menu_systray {
+    .dropdown-toggle,
+    .o_nav_entry {
+      color: rgba(255, 255, 255, 0.8) !important;
+      transition: all var(--riders-transition);
+
+      &:hover {
+        color: $riders-white !important;
+        background: rgba($riders-orange, 0.2) !important;
+        border-radius: 6px;
+      }
+    }
+
+    .o_user_menu .dropdown-toggle {
+      &:hover {
+        background: rgba($riders-orange, 0.2) !important;
+        border-radius: 6px;
+      }
+    }
+  }
+}
+
+// App switcher icon
+.o_navbar_apps_menu .dropdown-toggle {
+  &:hover {
+    .oi-apps {
+      color: $riders-orange !important;
+    }
+  }
+}
+
+// ============================================================
+// 4. ACTION MANAGER / CONTENT AREA
+// ============================================================
+.o_action_manager {
+  background: var(--riders-surface-alt);
+  padding: 0;
+}
+
+.o_content {
+  background: var(--riders-surface-alt);
+}
+
+// ============================================================
+// 5. CONTROL PANEL
+// ============================================================
+.o_control_panel {
+  background: var(--riders-surface) !important;
+  border-bottom: 1px solid var(--riders-border) !important;
+  box-shadow: var(--riders-shadow-sm);
+  padding: 12px 20px !important;
+
+  .o_control_panel_main {
+    .breadcrumb {
+      margin-bottom: 0;
+
+      .breadcrumb-item {
+        font-size: 0.85rem;
+        font-weight: 500;
+
+        &.active {
+          font-weight: 700;
+          color: var(--riders-text);
+          font-size: 1.1rem;
+        }
+
+        a {
+          color: $riders-orange;
+          text-decoration: none;
+
+          &:hover {
+            color: $riders-orange-dark;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// 6. BUTTONS
+// ============================================================
+.btn-primary {
+  background: $riders-orange !important;
+  border-color: $riders-orange !important;
+  color: $riders-white !important;
+  font-weight: 600;
+  border-radius: var(--riders-radius) !important;
+  padding: 8px 20px;
+  transition: all var(--riders-transition);
+  box-shadow: 0 2px 4px rgba($riders-orange, 0.2);
+
+  &:hover,
+  &:focus {
+    background: $riders-orange-dark !important;
+    border-color: $riders-orange-dark !important;
+    box-shadow: 0 4px 12px rgba($riders-orange, 0.3) !important;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    background: darken($riders-orange, 12%) !important;
+    transform: translateY(0);
+  }
+}
+
+.btn-secondary {
+  border-radius: var(--riders-radius) !important;
+  font-weight: 500;
+  padding: 8px 20px;
+  transition: all var(--riders-transition);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--riders-shadow);
+  }
+}
+
+.btn-link {
+  color: $riders-orange !important;
+  font-weight: 500;
+  text-decoration: none !important;
+
+  &:hover {
+    color: $riders-orange-dark !important;
+  }
+}
+
+// ============================================================
+// 7. FORM VIEWS
+// ============================================================
+.o_form_view {
+  .o_form_sheet_bg {
+    background: var(--riders-surface-alt) !important;
+    padding: 16px 24px !important;
+  }
+
+  .o_form_sheet {
+    background: var(--riders-surface) !important;
+    border: 1px solid var(--riders-border) !important;
+    border-radius: var(--riders-radius-lg) !important;
+    box-shadow: var(--riders-shadow) !important;
+    padding: 24px 28px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .o_group {
+    .o_group_col {
+      padding: 0 16px;
+    }
+  }
+
+  .o_inner_group {
+    .o_td_label {
+      .o_form_label {
+        font-weight: 600;
+        color: var(--riders-text-muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+    }
+  }
+
+  .o_field_widget {
+    input.o_input,
+    textarea.o_input {
+      border: 1.5px solid var(--riders-border) !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      transition: all var(--riders-transition);
+      background: var(--riders-surface);
+
+      &:focus {
+        border-color: $riders-orange !important;
+        box-shadow: 0 0 0 3px rgba($riders-orange, 0.12) !important;
+        outline: none;
+      }
+    }
+
+    .o_select_menu {
+      border-radius: 8px;
+    }
+  }
+
+  .o_notebook {
+    .nav-tabs {
+      border-bottom: 2px solid var(--riders-border);
+      gap: 4px;
+
+      .nav-link {
+        border: none !important;
+        border-radius: 8px 8px 0 0 !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--riders-text-muted);
+        padding: 10px 18px;
+        transition: all var(--riders-transition);
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: transparent;
+          transition: background var(--riders-transition);
+        }
+
+        &:hover {
+          color: $riders-orange;
+          background: $riders-orange-subtle;
+        }
+
+        &.active {
+          color: $riders-orange !important;
+          background: transparent;
+
+          &::after {
+            background: $riders-orange;
+          }
+        }
+      }
+    }
+  }
+
+  .o_statusbar_status {
+    .o_arrow_button {
+      font-weight: 600;
+      font-size: 0.8rem;
+
+      &.o_arrow_button_current {
+        background: $riders-orange !important;
+        color: $riders-white !important;
+      }
+    }
+  }
+}
+
+// ============================================================
+// 8. LIST VIEWS
+// ============================================================
+.o_list_view {
+  .o_list_table {
+    background: var(--riders-surface);
+    border-radius: var(--riders-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--riders-shadow-sm);
+    border: 1px solid var(--riders-border);
+
+    thead {
+      th {
+        background: var(--riders-surface-alt) !important;
+        border-bottom: 2px solid var(--riders-border) !important;
+        font-weight: 700;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--riders-text-muted);
+        padding: 12px 16px !important;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background var(--riders-transition);
+
+        td {
+          padding: 10px 16px !important;
+          border-bottom: 1px solid var(--riders-border);
+          vertical-align: middle;
+          font-size: 0.9rem;
+        }
+
+        &:hover {
+          background: $riders-orange-subtle !important;
+        }
+
+        &.o_data_row.o_row_draggable:hover {
+          cursor: grab;
+        }
+      }
+    }
+  }
+
+  .o_list_footer {
+    background: var(--riders-surface-alt);
+    font-weight: 700;
+  }
+}
+
+// ============================================================
+// 9. KANBAN VIEWS
+// ============================================================
+.o_kanban_view {
+  background: var(--riders-surface-alt) !important;
+  gap: 16px;
+
+  .o_kanban_group {
+    background: var(--riders-surface-alt);
+    padding: 0 8px;
+
+    .o_kanban_header {
+      .o_column_title {
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        color: var(--riders-text);
+      }
+    }
+  }
+
+  .o_kanban_record {
+    background: var(--riders-surface) !important;
+    border: 1px solid var(--riders-border) !important;
+    border-radius: var(--riders-radius) !important;
+    box-shadow: var(--riders-shadow-sm);
+    padding: 14px 16px !important;
+    margin-bottom: 10px;
+    transition: all var(--riders-transition);
+
+    &:hover {
+      box-shadow: var(--riders-shadow) !important;
+      transform: translateY(-2px);
+      border-color: rgba($riders-orange, 0.3) !important;
+    }
+
+    .o_kanban_record_title {
+      font-weight: 600;
+    }
+
+    .badge {
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 4px 10px;
+    }
+  }
+}
+
+// ============================================================
+// 10. SEARCH BAR
+// ============================================================
+.o_searchview {
+  border: 1.5px solid var(--riders-border) !important;
+  border-radius: var(--riders-radius) !important;
+  background: var(--riders-surface) !important;
+  box-shadow: none !important;
+  transition: all var(--riders-transition);
+
+  &:focus-within {
+    border-color: $riders-orange !important;
+    box-shadow: 0 0 0 3px rgba($riders-orange, 0.1) !important;
+  }
+
+  .o_searchview_input {
+    font-size: 0.9rem;
+
+    &::placeholder {
+      color: var(--riders-text-muted);
+    }
+  }
+}
+
+// Search facets
+.o_searchview .o_searchview_facet {
+  background: $riders-orange-subtle !important;
+  border: 1px solid rgba($riders-orange, 0.2) !important;
+  border-radius: 6px !important;
+
+  .o_searchview_facet_label {
+    background: $riders-orange !important;
+    color: $riders-white !important;
+    border-radius: 4px 0 0 4px !important;
+    font-weight: 600;
+  }
+}
+
+// ============================================================
+// 11. DROPDOWNS & MENUS
+// ============================================================
+.dropdown-menu {
+  border: 1px solid var(--riders-border) !important;
+  border-radius: var(--riders-radius) !important;
+  box-shadow: var(--riders-shadow-lg) !important;
+  padding: 6px !important;
+  background: var(--riders-surface) !important;
+  animation: ridersDropdown 0.15s ease-out;
+
+  .dropdown-item {
+    border-radius: 6px !important;
+    padding: 8px 14px !important;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all var(--riders-transition);
+
+    &:hover,
+    &:focus {
+      background: $riders-orange-subtle !important;
+      color: $riders-orange !important;
+    }
+
+    &.selected,
+    &.active {
+      background: $riders-orange !important;
+      color: $riders-white !important;
+    }
+  }
+}
+
+@keyframes ridersDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================================
+// 12. MODALS / DIALOGS
+// ============================================================
+.modal-content {
+  border: none !important;
+  border-radius: var(--riders-radius-lg) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden;
+
+  .modal-header {
+    background: var(--riders-surface);
+    border-bottom: 1px solid var(--riders-border);
+    padding: 18px 24px;
+
+    .modal-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .btn-close {
+      opacity: 0.5;
+      transition: opacity var(--riders-transition);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .modal-body {
+    padding: 24px;
+  }
+
+  .modal-footer {
+    background: var(--riders-surface-alt);
+    border-top: 1px solid var(--riders-border);
+    padding: 14px 24px;
+  }
+}
+
+// ============================================================
+// 13. CHATTER
+// ============================================================
+.o_ChatterContainer {
+  .o_Chatter {
+    .o_Chatter_topbar {
+      border-bottom: 1px solid var(--riders-border);
+      padding-bottom: 12px;
+
+      .btn {
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.82rem;
+      }
+    }
+  }
+}
+
+.o_Message {
+  border-radius: var(--riders-radius);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+
+  &:hover {
+    background: var(--riders-surface-alt);
+  }
+}
+
+// ============================================================
+// 14. BADGES & TAGS
+// ============================================================
+.badge {
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 0.2px;
+}
+
+.o_tag {
+  border-radius: 6px !important;
+  font-weight: 600;
+}
+
+.o_field_many2many_tags .badge {
+  border-radius: 6px !important;
+  padding: 5px 10px;
+  font-weight: 600;
+}
+
+// ============================================================
+// 15. CALENDAR VIEW
+// ============================================================
+.o_calendar_view {
+  .fc-event {
+    border-radius: 6px !important;
+    border: none !important;
+    padding: 3px 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    box-shadow: var(--riders-shadow-sm);
+  }
+
+  .fc-day-today {
+    background: $riders-orange-subtle !important;
+  }
+}
+
+// ============================================================
+// 16. SETTINGS PAGE
+// ============================================================
+.o_base_settings {
+  .o_setting_container {
+    .o_settings_container {
+      .o_setting_box {
+        border-radius: var(--riders-radius) !important;
+        border: 1px solid var(--riders-border);
+        padding: 16px;
+        margin-bottom: 12px;
+        transition: all var(--riders-transition);
+
+        &:hover {
+          box-shadow: var(--riders-shadow);
+        }
+      }
+    }
+  }
+
+  .o_settings_tab_bar {
+    .nav-link {
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all var(--riders-transition);
+
+      &.active {
+        background: $riders-orange !important;
+        color: $riders-white !important;
+      }
+    }
+  }
+}
+
+// ============================================================
+// 17. SIDEBAR / APP MENU
+// ============================================================
+.o_home_menu {
+  background: linear-gradient(135deg, $riders-gray-900 0%, $riders-dark 50%, darken($riders-orange, 20%) 100%) !important;
+
+  .o_home_menu_scrollable {
+    .o_apps {
+      .o_app {
+        transition: all var(--riders-transition);
+
+        .o_app_icon {
+          border-radius: var(--riders-radius-lg) !important;
+          box-shadow: var(--riders-shadow);
+          transition: all var(--riders-transition);
+        }
+
+        &:hover {
+          transform: translateY(-4px);
+
+          .o_app_icon {
+            box-shadow: var(--riders-shadow-lg);
+          }
+        }
+
+        .o_caption {
+          font-weight: 600;
+          font-size: 0.82rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+  }
+}
+
+// Home menu search
+.o_home_menu .o_search_bar {
+  .o_search_bar_input {
+    border-radius: var(--riders-radius) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: $riders-white !important;
+    backdrop-filter: blur(10px);
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border-color: $riders-orange !important;
+      box-shadow: 0 0 0 3px rgba($riders-orange, 0.2) !important;
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+  }
+}
+
+// ============================================================
+// 18. SCROLLBAR
+// ============================================================
+body.riders-backend {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: $riders-gray-300 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: $riders-gray-300;
+    border-radius: 3px;
+
+    &:hover {
+      background: $riders-gray-400;
+    }
+  }
+}
+
+// ============================================================
+// 19. LOADING BAR
+// ============================================================
+.o_loading_indicator {
+  background: $riders-orange !important;
+  height: 3px !important;
+}
+
+// ============================================================
+// 20. CHECKBOX & TOGGLE
+// ============================================================
+.form-check-input {
+  border-radius: 4px;
+  border: 2px solid var(--riders-border);
+  transition: all var(--riders-transition);
+
+  &:checked {
+    background-color: $riders-orange !important;
+    border-color: $riders-orange !important;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($riders-orange, 0.15) !important;
+    border-color: $riders-orange;
+  }
+}
+
+.form-switch .form-check-input {
+  border-radius: 20px;
+}
+
+// ============================================================
+// 21. PAGINATION
+// ============================================================
+.o_pager {
+  .o_pager_value {
+    font-weight: 600;
+    color: $riders-orange;
+  }
+
+  .o_pager_next,
+  .o_pager_previous {
+    color: var(--riders-text-muted);
+    transition: all var(--riders-transition);
+
+    &:hover {
+      color: $riders-orange;
+    }
+  }
+}
+
+// ============================================================
+// 22. SELECTION HIGHLIGHT
+// ============================================================
+::selection {
+  background: rgba($riders-orange, 0.2);
+  color: $riders-black;
+}
+
+// ============================================================
+// 23. TOOLTIP
+// ============================================================
+.tooltip {
+  .tooltip-inner {
+    background: $riders-black;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .tooltip-arrow::before {
+    border-top-color: $riders-black;
+  }
+}
+
+// ============================================================
+// 24. STAT BUTTONS (Form view)
+// ============================================================
+.o_form_view .oe_button_box {
+  .oe_stat_button {
+    border-radius: var(--riders-radius) !important;
+    border: 1px solid var(--riders-border) !important;
+    margin: 4px;
+    transition: all var(--riders-transition);
+    padding: 8px 16px;
+
+    &:hover {
+      background: $riders-orange-subtle !important;
+      border-color: rgba($riders-orange, 0.3) !important;
+      box-shadow: var(--riders-shadow-sm);
+    }
+
+    .o_button_icon {
+      color: $riders-orange;
+    }
+
+    .o_stat_info {
+      .o_stat_value {
+        font-weight: 800;
+        color: var(--riders-text);
+      }
+
+      .o_stat_text {
+        font-weight: 600;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--riders-text-muted);
+      }
+    }
+  }
+}
+
+// ============================================================
+// 25. PIVOT & GRAPH VIEWS
+// ============================================================
+.o_pivot {
+  .o_pivot_table {
+    border-radius: var(--riders-radius);
+    overflow: hidden;
+
+    th {
+      background: var(--riders-surface-alt);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// ============================================================
+// 26. NOTIFICATION / TOAST
+// ============================================================
+.o_notification_manager {
+  .o_notification {
+    border-radius: var(--riders-radius) !important;
+    box-shadow: var(--riders-shadow-lg) !important;
+    border: none !important;
+    padding: 14px 18px;
+
+    &.border-success {
+      border-left: 4px solid #10B981 !important;
+    }
+
+    &.border-warning {
+      border-left: 4px solid $riders-orange !important;
+    }
+
+    &.border-danger {
+      border-left: 4px solid #EF4444 !important;
+    }
+
+    &.border-info {
+      border-left: 4px solid #3B82F6 !important;
+    }
+  }
+}
+
+// ============================================================
+// 27. LINK COLORS
+// ============================================================
+a {
+  color: $riders-orange;
+  transition: color var(--riders-transition);
+
+  &:hover {
+    color: $riders-orange-dark;
+  }
+}
+
+// ============================================================
+// 28. DASHBOARD / REPORTING
+// ============================================================
+.o_dashboard {
+  .o_dashboard_action {
+    background: var(--riders-surface);
+    border: 1px solid var(--riders-border);
+    border-radius: var(--riders-radius-lg);
+    box-shadow: var(--riders-shadow-sm);
+    overflow: hidden;
+    transition: all var(--riders-transition);
+
+    &:hover {
+      box-shadow: var(--riders-shadow);
+    }
+  }
+}
+
+// ============================================================
+// 29. PROGRESS BAR
+// ============================================================
+.progress {
+  border-radius: 8px;
+  height: 8px;
+  background: var(--riders-surface-alt);
+
+  .progress-bar {
+    background: linear-gradient(90deg, $riders-orange, $riders-orange-light) !important;
+    border-radius: 8px;
+  }
+}
+
+// ============================================================
+// 30. FIELD STATUS COLORS
+// ============================================================
+.o_field_widget {
+  .text-success {
+    color: #059669 !important;
+  }
+  .text-warning {
+    color: $riders-orange !important;
+  }
+  .text-danger {
+    color: #DC2626 !important;
+  }
+}
+
+// ============================================================
+// 31. DISCUSS APP
+// ============================================================
+.o_Discuss {
+  .o-mail-DiscussSidebar {
+    background: var(--riders-surface) !important;
+    border-right: 1px solid var(--riders-border);
+
+    .o-mail-DiscussSidebarChannel {
+      border-radius: 8px;
+      margin: 2px 8px;
+
+      &.o-active {
+        background: $riders-orange-subtle !important;
+        color: $riders-orange !important;
+      }
+
+      &:hover {
+        background: var(--riders-surface-alt);
+      }
+    }
+  }
+}
+
+// ============================================================
+// 32. FLOATING ACTION BUTTON STYLE FOR FAB-LIKE ELEMENTS
+// ============================================================
+.o_kanban_quick_add {
+  border: 2px dashed rgba($riders-orange, 0.3) !important;
+  border-radius: var(--riders-radius) !important;
+  color: $riders-orange !important;
+  font-weight: 600;
+  transition: all var(--riders-transition);
+
+  &:hover {
+    background: $riders-orange-subtle !important;
+    border-color: $riders-orange !important;
+  }
+}
+
+// ============================================================
+// 33. SUBTLE ANIMATIONS
+// ============================================================
+@keyframes ridersFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.o_form_view .o_form_sheet,
+.o_list_view .o_list_table,
+.o_kanban_view .o_kanban_record,
+.modal.show .modal-content {
+  animation: ridersFadeIn 0.25s ease-out;
+}
